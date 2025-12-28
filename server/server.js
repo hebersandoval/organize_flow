@@ -3,6 +3,11 @@ import express from 'express';
 const app = express();
 const PORT = 8000;
 
+// Index route
+app.use('/', (req, res) => {
+    res.status(200).json({ message: 'Hello home page' });
+});
+
 // Catch-all 404 handler (use a pathless middleware to avoid path parsing errors)
 // app.use('*', (req, res) => {
 app.use((req, res) => {
