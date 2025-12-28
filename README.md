@@ -9,7 +9,7 @@
 *   [Node.js](https://nodejs.org/)
 *   [Express.js](https://expressjs.com)
 *   [MongoDB](https://mongodb.com)
-*   [React.js](https://reac.dev)
+*   [React.js](https://react.dev)
 *   Other supporting libraries and packages
 
 ## Prerequisites
