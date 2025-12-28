@@ -7,9 +7,9 @@
 ## Technologies Used
 
 *   [Node.js](https://nodejs.org/)
-*   [Express.js](expressjs.com)
-*   [MongoDB](mongodb.com)
-*   [React.js](reac.dev)
+*   [Express.js](https://expressjs.com)
+*   [MongoDB](https://mongodb.com)
+*   [React.js](https://reac.dev)
 *   Other supporting libraries and packages
 
 ## Prerequisites
