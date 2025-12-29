@@ -4,6 +4,7 @@ import 'dotenv/config';
 // Local imports
 import { db } from './libs/dbConnect.js';
 import userRouter from './routes/user.route.js';
+import { errorHandler } from './libs/middleware.js';
 
 const app = express();
 const PORT = 8000;
@@ -21,6 +22,8 @@ app.use('/', (req, res) => {
 app.use('*', (req, res) => {
     res.status(404).json({ message: 'Not found' });
 });
+
+app.use(errorHandler);
 
 // Start the server
 app.listen(PORT, () => {
