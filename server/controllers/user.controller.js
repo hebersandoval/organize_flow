@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb';
+import bcrypt from 'bcrypt';
 
 // Local imports
 import { db } from '../libs/dbConnect.js';
@@ -20,6 +21,35 @@ export const getUser = async (req, res, next) => {
         }
 
         res.status(200).json(user);
+    } catch (error) {
+        next({ status: 500, error });
+    }
+};
+
+export const updateUser = async (req, res, next) => {
+    try {
+        if (req.body.password) {
+            req.body.pasword = await bcrypt.hash(req.body.password, 10);
+        }
+
+        const query = { _id: new ObjectId(req.params.id) };
+
+        const data = {
+            $set: {
+                ...req.body,
+                updatedAt: new Date().toISOString(),
+            },
+        };
+
+        const options = {
+            returnDocument: 'after',
+        };
+
+        const updatedUser = await collection.findOneAndUpdate(query, data, options);
+
+        const { password: pass, updatedAt, createdAt, ...rest } = updatedUser;
+
+        res.status(200).json(updatedUser);
     } catch (error) {
         next({ status: 500, error });
     }
