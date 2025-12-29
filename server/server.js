@@ -3,9 +3,12 @@ import 'dotenv/config';
 
 // Local imports
 import { db } from './libs/dbConnect.js';
+import userRouter from './routes/user.route.js';
 
 const app = express();
 const PORT = 8000;
+
+app.use('/api/v1/users', userRouter);
 
 // Index route
 app.use('/', (req, res) => {
