@@ -2,7 +2,6 @@ import express from 'express';
 import 'dotenv/config';
 
 // Local imports
-import { db } from './libs/dbConnect.js';
 import userRouter from './routes/user.route.js';
 import { errorHandler } from './libs/middleware.js';
 
@@ -13,11 +12,6 @@ const PORT = 8000;
 app.use(express.json());
 
 app.use('/api/v1/users', userRouter);
-
-// Index route
-app.use('/', (req, res) => {
-    res.status(200).json({ message: 'Hello home page' });
-});
 
 app.use('*', (req, res) => {
     res.status(404).json({ message: 'Not found' });
