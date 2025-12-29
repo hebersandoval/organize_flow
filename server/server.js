@@ -8,6 +8,9 @@ import userRouter from './routes/user.route.js';
 const app = express();
 const PORT = 8000;
 
+// JSON middleware to send values in request body to parse incoming JSON data
+app.use(express.json());
+
 app.use('/api/v1/users', userRouter);
 
 // Index route
