@@ -6,11 +6,6 @@ import { db } from '../libs/dbConnect.js';
 
 const collection = db.collection('users');
 
-export const test = async (req, res) => {
-    let results = await collection.find({}).toArray();
-    res.status(200).json(results);
-};
-
 export const getUser = async (req, res, next) => {
     try {
         const query = { _id: new ObjectId(req.params.id) };
