@@ -1,22 +1,13 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Home from './pages/Home';
 function App() {
-    const [visibility, setVisibility] = useState(true);
-
-    const toggleDiv = () => {
-        setVisibility(!visibility);
-    };
-
     return (
-        <div>
-            {visibility && (
-                <div id="myDiv">
-                    <p>Hello world</p>
-                </div>
-            )}
-
-            <button onClick={toggleDiv}>Toggle "div"</button>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
