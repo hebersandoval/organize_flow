@@ -22,10 +22,20 @@ export default function SignUp() {
                         <Input
                             id="username"
                             type="text"
-                            placeholder="username"
+                            placeholder="Username"
                             {...register('username', { required: 'Username is required' })}
                         />
                         <FormErrorMessage>{errors.username && errors.username.message}</FormErrorMessage>
+                    </FormControl>
+
+                    <FormControl>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="Email"
+                            {...register('email', { required: 'Email is required' })}
+                        />
+                        <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
                     </FormControl>
                 </Stack>
             </form>
