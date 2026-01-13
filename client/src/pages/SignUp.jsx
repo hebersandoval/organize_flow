@@ -47,6 +47,10 @@ export default function SignUp() {
                         />
                         <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
                     </FormControl>
+
+                    <Button type="submit" isLoading={isSubmitting} colorScheme="teal" textTransform="uppercase">
+                        Sign up
+                    </Button>
                 </Stack>
             </form>
 
