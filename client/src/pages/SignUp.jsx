@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FormControl, Input, Button, Text, Box, Flex, Heading, Stack, FormErrorMessage } from '@chakra-ui/react';
+import toast from 'react-hot-toast';
 
 export default function SignUp() {
     const {
@@ -10,7 +11,7 @@ export default function SignUp() {
     } = useForm();
 
     const doSubmit = async (values) => {
-        alert('Sign up succesful. You are now logged in');
+        toast.success("Sign up succesful. You're now logged in.");
     };
 
     return (
