@@ -15,7 +15,20 @@ export default function SignUp() {
                 Create an account
             </Heading>
 
-            <form>{/* form details */}</form>
+            {/* Form details */}
+            <form>
+                <Stack gap="4">
+                    <FormControl isInvalid={errors.username}>
+                        <Input
+                            id="username"
+                            type="text"
+                            placeholder="username"
+                            {...register('username', { required: 'Username is required' })}
+                        />
+                        <FormErrorMessage>{errors.username && errors.username.message}</FormErrorMessage>
+                    </FormControl>
+                </Stack>
+            </form>
 
             <Flex gap="2" mt="5">
                 <Text>Have an account?</Text>
