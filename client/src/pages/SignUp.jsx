@@ -37,6 +37,16 @@ export default function SignUp() {
                         />
                         <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
                     </FormControl>
+
+                    <FormControl>
+                        <Input
+                            id="password"
+                            type="password"
+                            placeholder="Password"
+                            {...register('password', { required: 'Password is required' })}
+                        />
+                        <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
+                    </FormControl>
                 </Stack>
             </form>
 
