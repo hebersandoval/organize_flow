@@ -9,6 +9,10 @@ export default function SignUp() {
         formState: { errors, isSubmitting },
     } = useForm();
 
+    const doSubmit = async (values) => {
+        alert('Sign up succesful. You are now logged in');
+    };
+
     return (
         <Box p="3" maxW="lg" mx="auto">
             <Heading as="h1" textAlign="center" fontSize="3xl" fontWeight="semibold" my="7">
@@ -16,7 +20,7 @@ export default function SignUp() {
             </Heading>
 
             {/* Form details */}
-            <form>
+            <form onSubmit={handleSubmit(doSubmit)}>
                 <Stack gap="4">
                     <FormControl isInvalid={errors.username}>
                         <Input
