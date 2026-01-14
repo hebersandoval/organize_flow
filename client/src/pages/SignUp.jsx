@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { FormControl, Input, Button, Text, Box, Flex, Heading, Stack, FormErrorMessage } from '@chakra-ui/react';
 import toast from 'react-hot-toast';
 
+// Local imports
+import { API_BASE_URL } from '../util.js';
+
 export default function SignUp() {
     const {
         handleSubmit,
@@ -11,7 +14,25 @@ export default function SignUp() {
     } = useForm();
 
     const doSubmit = async (values) => {
-        toast.success("Sign up succesful. You're now logged in.");
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/signup`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            const data = await res.json();
+
+            if (res.status === 200) {
+                toast.success("Sign up succesful. You're now logged in.");
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error('Something went wrong.');
+        }
     };
 
     return (
