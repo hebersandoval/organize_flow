@@ -33,17 +33,17 @@ export const signup = async (req, res, next) => {
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toDateString(),
         };
+
+        // JWT stuff
+        const { insertedId } = await collection.insertOne(user);
+        const token = jwt.sign({ id: insertedId }, process.env.AUTH_SECRET);
+
+        user._id = insertedId;
+
+        const { password: pass, updatedAt, createdAt, ...rest } = user;
+
+        res.cookie('organize_flow_token', token, { httpOnly: true }).status(200).json(rest);
     } catch (error) {
         next({ status: 500, error });
     }
-
-    // JWT stuff
-    const { insertedId } = await collection.insertOne(user);
-    const token = jwt.sign({ id: insertedId }, process.env.AUTH_SECRET);
-
-    user._id = insertedId;
-
-    const { password: pass, updatedAt, createdAt, ...rest } = user;
-
-    res.cookie('organize_flow_token', token, { httpOnly: true }).status(200).json(rest);
 };
