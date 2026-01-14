@@ -1,6 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 // Local imports
 import userRouter from './routes/user.route.js';
@@ -12,7 +13,15 @@ const PORT = 8000;
 
 // JSON middleware to send values in request body to parse incoming JSON data
 app.use(express.json());
+// Cookie parser middleware
 app.use(cookieParser());
+// CORS middleware
+app.use(
+    cors({
+        origin: process.env.CLIENT_URL,
+        credentials: true,
+    })
+);
 
 // Routes
 app.use('/api/v1/users', userRouter);
