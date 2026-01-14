@@ -4,6 +4,7 @@ import 'dotenv/config';
 // Local imports
 import userRouter from './routes/user.route.js';
 import { errorHandler } from './libs/middleware.js';
+import authRouter from './routes/auth.route.js';
 
 const app = express();
 const PORT = 8000;
@@ -11,7 +12,10 @@ const PORT = 8000;
 // JSON middleware to send values in request body to parse incoming JSON data
 app.use(express.json());
 
+// Routes
 app.use('/api/v1/users', userRouter);
+
+app.use('/api/v1/auth', authRouter);
 
 app.use('*', (req, res) => {
     res.status(404).json({ message: 'Not found' });
