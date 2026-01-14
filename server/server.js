@@ -1,5 +1,6 @@
 import express from 'express';
 import 'dotenv/config';
+import cookieParser from 'cookie-parser';
 
 // Local imports
 import userRouter from './routes/user.route.js';
@@ -11,6 +12,7 @@ const PORT = 8000;
 
 // JSON middleware to send values in request body to parse incoming JSON data
 app.use(express.json());
+app.use(cookieParser());
 
 // Routes
 app.use('/api/v1/users', userRouter);
