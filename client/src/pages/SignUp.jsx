@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 
 // Local imports
 import { API_BASE_URL } from '../util.js';
+import { useUser } from '../context/UserContext.jsx';
 
 export default function SignUp() {
     const {
@@ -12,6 +13,8 @@ export default function SignUp() {
         register,
         formState: { errors, isSubmitting },
     } = useForm();
+
+    const { updateUser } = useUser();
 
     const doSubmit = async (values) => {
         try {
@@ -27,6 +30,7 @@ export default function SignUp() {
 
             if (res.status === 200) {
                 toast.success("Sign up succesful. You're now logged in.");
+                updateUser(data);
             } else {
                 toast.error(data.message);
             }
