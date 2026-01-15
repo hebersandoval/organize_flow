@@ -2,8 +2,8 @@ import { createContext, useContext, useState } from 'react';
 
 const UserContext = createContext();
 
-const UserProvider = (user) => {
-    const [user, setUser] = userState(null);
+const UserProvider = (props) => {
+    const [user, setUser] = useState(null);
 
     const updateUser = (user) => {
         setUser(user);
