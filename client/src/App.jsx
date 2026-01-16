@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import NavBar from './components/NavBar';
 import { UserProvider, useUser } from './context/UserContext';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <UserProvider>
             <ChakraProvider>
                 <BrowserRouter>
+                    <NavBar />
                     <Toaster position="bottom-right" />
                     <Routes>
                         <Route path="/" element={<Home />} />
