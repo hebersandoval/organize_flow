@@ -73,3 +73,12 @@ export const signin = async (req, res, next) => {
         next({ status: 500, error });
     }
 };
+
+export const signOut = async (req, res, next) => {
+    try {
+        res.clearCookie('organize_flow_token');
+        res.status(200).json({ message: 'Sign out successfull.' });
+    } catch (error) {
+        next({ status: 500 });
+    }
+};
