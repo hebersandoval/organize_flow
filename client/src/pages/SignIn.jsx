@@ -42,4 +42,48 @@ export default function SignIn() {
             toast.error('Something went wrong.');
         }
     };
+
+    return (
+        <Box p="3" maxW="lg" mx="auto">
+            <Heading as="h1" textAlign="center" fontSize="3xl" fontWeight="semibold" my="7">
+                Enter your credentials
+            </Heading>
+            <form onSubmit={handleSubmit(doSubmit)}>
+                <Stack gap="4">
+                    <FormControl isInvalid={errors.email}>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="Email"
+                            {...register('email', { required: 'Email is required. ' })}
+                        />
+                        <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
+                    </FormControl>
+
+                    <FormControl isInvalid={errors.password}>
+                        <Input
+                            id="password"
+                            type="password"
+                            placeholder="Password"
+                            {...register('password', { required: 'Password is required.' })}
+                        />
+                        <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
+                    </FormControl>
+
+                    <Button type="submit" isLoading={isSubmitting} colorScheme="teal" textTransform="uppercase">
+                        Sign in
+                    </Button>
+                </Stack>
+            </form>
+
+            <Flex gap="2" mt="5">
+                <Text>Don't have an account?</Text>
+                <Link to={'/signup'}>
+                    <Text as="span" color="blue.400">
+                        Sign up
+                    </Text>
+                </Link>
+            </Flex>
+        </Box>
+    );
 }
