@@ -47,3 +47,29 @@ export const signup = async (req, res, next) => {
         next({ status: 500, error });
     }
 };
+
+export const signin = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    try {
+        const validUser = await collection.findOne({ email });
+
+        if (!validUser) {
+            return next({ status: 404, message: 'User not found.' });
+        }
+
+        const validPassword = await bcrypt.compare(password, validUser.password);
+
+        if (!validPassword) {
+            return next({ status: 401, message: 'Wrong password!' });
+        }
+
+        const token = jwt.sign({ id: validUser._id }, process.env.AUTH_SECRET);
+
+        const { password: pass, updatedAt, createdAt, ...rest } = validUser;
+
+        res.cookie('organize_flow_token', token, { httpOnly: trud }).status(200).json(rest);
+    } catch (error) {
+        next({ status: 500, error });
+    }
+};
