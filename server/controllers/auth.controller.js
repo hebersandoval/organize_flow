@@ -68,7 +68,7 @@ export const signin = async (req, res, next) => {
 
         const { password: pass, updatedAt, createdAt, ...rest } = validUser;
 
-        res.cookie('organize_flow_token', token, { httpOnly: trud }).status(200).json(rest);
+        res.cookie('organize_flow_token', token, { httpOnly: true }).status(200).json(rest);
     } catch (error) {
         next({ status: 500, error });
     }
