@@ -16,9 +16,9 @@ export default function NavBar() {
                 credentials: 'include',
             });
 
-            const message = await res.json();
+            const data = await res.json();
 
-            toast.success(message);
+            toast.success(data.message);
 
             updateUser(null);
 
