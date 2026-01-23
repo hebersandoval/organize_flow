@@ -1,9 +1,12 @@
 import { createContext, useContext, useState } from 'react';
 
+// Local imports
+import { useLocalStorage } from '../util.js';
+
 const UserContext = createContext();
 
 const UserProvider = (props) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useLocalStorage('organize_flow_user', null);
 
     const updateUser = (user) => {
         setUser(user);
