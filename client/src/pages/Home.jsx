@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Heading, Button, Text, Link, Flex, Stack, Image } from '@chakra-ui/react';
 
 // Local imports
-import productiveSvg from '/productive.svg';
+import productiveSvg from '/productive_3.svg';
 export default function Home() {
     return (
         <Flex direction={{ base: 'colum', md: 'row' }} gap={6} p={14} maxW="6-xl" mx="auto">
